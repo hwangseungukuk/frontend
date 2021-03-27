@@ -69,8 +69,8 @@
           <a href="http://thelpartners.co.kr/daon/privacy.html" target="_blank">보기</a></center>
       </div>
       <div id="name-input">
-        <input type="text" placeholder="이름" autofocus>
-        <input type="phone" placeholder="전화번호" autofocus>
+        <input id="name" type="text" placeholder="이름" autofocus>
+        <input id="phone" type="phone" placeholder="전화번호" autofocus>
       </div>
       <p class="check-name warning"></p>
       <div class="start-wrap">
@@ -106,8 +106,9 @@
 
         <div class="result title"></div>
         <div class="res desc"></div>
+        <div id="send-result">결과 저장하기</div>
       </div>
-      <hr>
+      <hr style="margin: 30px 0;">
       <p>친구들과 공유하기</p>
       <div class="hash">#10_things_test #3분이미지테스트 #이미지테스트</div>
       <div id="share-box">
@@ -145,6 +146,7 @@
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
   <script src="js/share.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </body>
 
 </html>

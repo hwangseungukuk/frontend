@@ -260,6 +260,13 @@
     font-size: 19.2px;
     font-size: 1.2rem;
   }
+  #send-result{
+    cursor: pointer;
+    display: inline;
+    border: 2px solid #BCBCBC;
+    padding: 15px 10px;
+    border-radius: 20px;
+  }
   #share-box {
     margin: 25px 30% 30px 30%;
     width: 40%;
