@@ -75,7 +75,6 @@ const goResult = () => {
     wrap.style.marginTop = '150px';
   } else if (tabletMQL.matches) {
     console.log('tablet');
-    console.log(animal.value);
     wrap.style.marginTop = '115px';
   }
 
@@ -111,20 +110,24 @@ const goResult = () => {
   }, 600);
 
   let sendResult = document.getElementById('send-result');
-  let colorRes = animal.value
 
   sendResult.addEventListener('click', () => {
     sendResult.innerText = '저장완료!!';
     sendResult.style.border = "none";
+    let colorRes = animal.textContent;
+
 
     axios({
-      url: 'http://13.124.115.223:8080/survey',
+      url: 'http://13.124.115.223:8040' + '/survey',
       method: 'post',
-      data: colorRes
+      data: {
+        survey: colorRes
+      }
     }).then((res) => {
       console.log(res);
+      console.log(colorRes)
     }).catch((err) => {
-      console.log('result error');
+      console.log(err);
     })
   })
 
@@ -235,8 +238,7 @@ const begin = () => {
 }
 
 const load = () => {
-  let name = document.getElementById("name").value;
-  let phone = document.getElementById("phone").value;
+
   const msg = document.querySelector('.check-name');
 
   u_name.addEventListener('blur', () => {
@@ -250,9 +252,9 @@ const load = () => {
     }
   });
   start_btn.addEventListener('click', async () => {
-
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
     try {
-
       if (u_name.value.length < 1) {
         throw '이름을 입력하고 시작해 주세요.';
       }
@@ -260,13 +262,14 @@ const load = () => {
       start_btn.disabled = true;
       begin();
       await axios({
-        url: 'http://13.124.115.223:8080',
+        url: 'http://13.124.115.223:8040',
         method: 'post',
         data: {
           name: name,
           number: phone
         }
       })
+      console.log(name, phone);
     } catch (err) {
       msg.innerHTML = err;
     }
